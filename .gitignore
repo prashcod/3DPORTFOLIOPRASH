@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# macOS-generated files
+.DS_Store
+
+# Blender automatic backup files
+*.blend1
+*.blend2
+*.blend3

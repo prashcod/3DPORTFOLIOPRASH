@@ -2,7 +2,7 @@ import { Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { Environment } from '@react-three/drei'
 
-import { CameraRig } from '../components/three/CameraRig'
+import { BlenderCameraRig } from '../components/three/BlenderCameraRig'
 import { PrototypeWorld } from '../components/three/PrototypeWorld'
 
 export function Experience() {
@@ -43,7 +43,7 @@ export function Experience() {
         <Environment preset="city" />
       </Suspense>
 
-      <CameraRig />
+      <BlenderCameraRig />
     </Canvas>
   )
 }

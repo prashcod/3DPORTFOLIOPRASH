@@ -2,6 +2,7 @@ import {
   Float,
   Sparkles,
 } from '@react-three/drei'
+import { BlenderPipelineScene } from './BlenderPipelineScene'
 
 export function PrototypeWorld() {
   return (
@@ -16,30 +17,10 @@ export function PrototypeWorld() {
         color="#83ff00"
       />
 
-      {/* Chapter 1: Identity */}
-      <Float
-        speed={1.2}
-        rotationIntensity={0.25}
-        floatIntensity={0.35}
-      >
-        <mesh position={[0, 0, 0]}>
-          <icosahedronGeometry args={[1.25, 3]} />
-
-          <meshStandardMaterial
-            color="#83ff00"
-            emissive="#245f00"
-            emissiveIntensity={1.2}
-            roughness={0.25}
-            metalness={0.35}
-          />
-        </mesh>
-      </Float>
-
-      <pointLight
-        position={[0, 1, 1]}
-        color="#83ff00"
-        intensity={14}
-        distance={8}
+      {/* Chapter 1: Blender pipeline test */}
+      <BlenderPipelineScene
+        position={[0, 0, 0]}
+        scale={1}
       />
 
       {/* Chapter 2: Brain */}
