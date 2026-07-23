@@ -18,22 +18,9 @@ export function PrototypeWorld() {
       />
 
       {/* Chapter 1: Blender pipeline test */}
-      <Float
-        speed={1.2}
-        rotationIntensity={0.25}
-        floatIntensity={0.35}
-      >
-        <BlenderPipelineScene
-          position={[0, 0, 0]}
-          scale={1}
-        />
-      </Float>
-
-      <pointLight
-        position={[0, 1, 1]}
-        color="#83ff00"
-        intensity={14}
-        distance={8}
+      <BlenderPipelineScene
+        position={[0, 0, 0]}
+        scale={1}
       />
 
       {/* Chapter 2: Brain */}
