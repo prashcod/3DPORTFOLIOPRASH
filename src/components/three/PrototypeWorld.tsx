@@ -79,7 +79,7 @@ export function PrototypeWorld() {
       />
 
       {/* Chapter 3: Project Arena */}
-      <group position={[-1.3, 0, -10]}>
+      <group position={[0.3, 0, -10]}>
         <Float
           speed={1.1}
           floatIntensity={0.5}
@@ -127,7 +127,7 @@ export function PrototypeWorld() {
       </group>
 
       <pointLight
-        position={[-1.3, 1, -9]}
+        position={[0.3, 1, -9]}
         color="#00eaff"
         intensity={16}
         distance={8}

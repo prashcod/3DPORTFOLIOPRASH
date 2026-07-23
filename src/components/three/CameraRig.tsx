@@ -28,11 +28,11 @@ export function CameraRig() {
       new CatmullRomCurve3(
         [
           new Vector3(0, 0.3, 6.5),
-          new Vector3(0, 0.2, 3.2),
-          new Vector3(0.8, 0.4, -1.5),
-          new Vector3(-1.2, 0.2, -6.5),
-          new Vector3(0.8, 0.4, -11.5),
-          new Vector3(0.3, 0.2, -13.5),
+          new Vector3(-1.8, 0.4, 3),
+          new Vector3(-2.4, 0.5, -1.5),
+          new Vector3(-2.8, 0.3, -6.5),
+          new Vector3(-3.5, 0.5, -11.5),
+          new Vector3(-2, 0.3, -13),
         ],
         false,
         'catmullrom',
