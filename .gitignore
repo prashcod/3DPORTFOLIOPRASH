@@ -30,3 +30,15 @@ dist-ssr
 *.blend1
 *.blend2
 *.blend3
+
+# Private hero reference photographs
+references/hero/*
+!references/hero/.gitkeep
+
+# Blender temporary and backup files
+*.blend1
+*.blend2
+*.blend3
+
+# macOS metadata
+.DS_Store
