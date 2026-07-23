@@ -1,4 +1,11 @@
 :root {
+  --background: #030303;
+  --text: #ffffff;
+  --muted: rgba(255, 255, 255, 0.68);
+  --border: rgba(255, 255, 255, 0.14);
+  --panel: rgba(12, 12, 12, 0.76);
+  --accent: #83ff00;
+
   font-family:
     Inter,
     ui-sans-serif,
@@ -8,8 +15,8 @@
     "Segoe UI",
     sans-serif;
 
-  color: #ffffff;
-  background: #050505;
+  color: var(--text);
+  background: var(--background);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -29,20 +36,29 @@ body,
 
 body {
   overflow: hidden;
+  overscroll-behavior: none;
+  background: var(--background);
 }
 
 button,
 input,
-textarea {
+textarea,
+select {
   font: inherit;
+}
+
+button {
+  color: inherit;
 }
 
 .app {
   position: relative;
   width: 100%;
   height: 100vh;
+  height: 100dvh;
   overflow: hidden;
-  background: #050505;
+  touch-action: none;
+  background: var(--background);
 }
 
 .experience-layer {
@@ -62,34 +78,41 @@ textarea {
   z-index: 10;
   display: flex;
   align-items: flex-end;
-  pointer-events: none;
+  justify-content: space-between;
   padding: clamp(24px, 6vw, 96px);
+  pointer-events: none;
 }
 
 .hero-copy {
-  width: min(560px, 100%);
+  width: min(600px, 100%);
+}
+
+.chapter-copy {
+  animation: chapter-enter 600ms
+    cubic-bezier(0.2, 0.75, 0.25, 1) both;
 }
 
 .eyebrow {
   margin: 0 0 14px;
-  color: #83ff00;
+  color: var(--accent);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.18em;
 }
 
 h1 {
+  max-width: 760px;
   margin: 0;
-  font-size: clamp(2.8rem, 8vw, 7rem);
+  font-size: clamp(2.8rem, 7vw, 7rem);
   font-weight: 600;
-  line-height: 0.9;
+  line-height: 0.92;
   letter-spacing: -0.055em;
 }
 
 .description {
-  max-width: 520px;
+  max-width: 540px;
   margin: 24px 0 0;
-  color: rgba(255, 255, 255, 0.72);
+  color: var(--muted);
   font-size: clamp(1rem, 1.5vw, 1.2rem);
   line-height: 1.6;
 }
@@ -108,8 +131,112 @@ h1 {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #83ff00;
-  box-shadow: 0 0 18px rgba(131, 255, 0, 0.9);
+  background: var(--accent);
+  box-shadow:
+    0 0 18px rgba(131, 255, 0, 0.9);
+}
+
+.scroll-hint {
+  margin: 14px 0 0;
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 0.76rem;
+  letter-spacing: 0.05em;
+}
+
+.chapter-counter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+}
+
+.chapter-line {
+  width: 54px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.journey-debug {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  z-index: 30;
+  width: min(320px, calc(100% - 48px));
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--panel);
+  backdrop-filter: blur(18px);
+  pointer-events: auto;
+  touch-action: auto;
+}
+
+.debug-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 15px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.debug-heading output {
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.debug-label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.journey-debug input[type="range"] {
+  width: 100%;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.debug-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.debug-buttons button {
+  min-height: 36px;
+  padding: 7px 9px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+}
+
+.debug-buttons button:hover:not(:disabled) {
+  border-color: rgba(131, 255, 0, 0.5);
+  background: rgba(131, 255, 0, 0.11);
+}
+
+.debug-buttons button:disabled {
+  cursor: not-allowed;
+  opacity: 0.35;
+}
+
+@keyframes chapter-enter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 700px) {
@@ -119,5 +246,19 @@ h1 {
 
   .description {
     max-width: 340px;
+  }
+
+  .chapter-counter {
+    display: none;
+  }
+
+  .journey-debug {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chapter-copy {
+    animation: none;
   }
 }
